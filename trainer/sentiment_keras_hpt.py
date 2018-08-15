@@ -123,7 +123,7 @@ if __name__ == '__main__':
     )
     parser.add_argument(
       '--dropout_two',
-      hepp='Dropout hyperparam after the second dense layer'
+      help='Dropout hyperparam after the second dense layer'
     )
 
     args = parser.parse_args()
