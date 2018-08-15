@@ -6,11 +6,9 @@ export REGION=us-east1
 gcloud ml-engine jobs submit training $JOB_NAME \
   --job-dir gs://$BUCKET_NAME/$JOB_NAME \
   --runtime-version 1.0 \
-  --module-name trainer.sentiment_keras_hpt \
+  --module-name trainer.sentiment_keras \
   --package-path ./trainer \
   --region $REGION \
   --config=trainer/cloudml-gpu.yaml \
   -- \
-  --train-file gs://keras-sentiment/sentiment_set.pickle \
-  --dropout-one 0.2 \
-  --dropout-two 0.2
+  --train-file gs://keras-sentiment/sentiment_set.pickle 
