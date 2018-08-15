@@ -1,4 +1,4 @@
-## Keras on Cloud ML engine: A simple sentiment analysis
+# Keras on Cloud ML engine: A simple sentiment analysis
 
 A beginner guide to set up and run a LSTM model for a simple sentiment analysis on Google's Cloud ML Engine. You can get a sample of train and test datasets from [here](https://github.com/liufuyang/kaggle-youtube-8m/tree/master/tf-learn/example-3-sentiment).
 
@@ -11,6 +11,13 @@ A beginner guide to set up and run a LSTM model for a simple sentiment analysis 
 `gcloud ml-engine model list`
 
 You should see `List 0 items`. because we haven't created any ML Engine models yet.
+
+### Upload the preprocessing data to a Google Cloud Storage bucket 
+```
+gsutil mb gs://your-bucket-name
+gsutil cp -r sentiment_set.pickle gs://your-bucket-name/sentiment_set.pickle
+```
+
 ### Cloud ML Engine's project structure 
 The basic project structure will look something like this: 
 
