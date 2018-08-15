@@ -43,3 +43,23 @@ gcloud ml-engine local train \
 ```
 
 or `source gcloud.local.run.keras.sh`
+
+To submit a job to Cloud ML Engine:
+```
+export BUCKET_NAME=keras-sentiment
+export JOB_NAME="sentiment_train_$(date +%Y%m%d_%H%M%S)"
+export JOB_DIR=gs://$BUCKET_NAME/$JOB_NAME
+export REGION=us-east1
+
+gcloud ml-engine jobs submit training $JOB_NAME \
+  --job-dir gs://$BUCKET_NAME/$JOB_NAME \
+  --runtime-version 1.0 \
+  --module-name trainer.sentiment_keras_hpt \
+  --package-path ./trainer \
+  --region $REGION \
+  --config=trainer/cloudml-gpu.yaml \
+  -- \
+  --train-file gs://keras-sentiment/sentiment_set.pickle 
+```
+
+Click here to view the [job status](https://console.cloud.google.com/mlengine/jobs?project=zinc-chiller-213404).
