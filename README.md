@@ -22,12 +22,6 @@ gsutil cp -r sentiment_set.pickle gs://your-bucket-name/sentiment_set.pickle
 The basic project structure will look something like this: 
 ![project structure](img/recommended-project-structure.png?raw=true)
 
-<!-- ```
-├── README.md
-├── sentiment_set.pickle
-├── setup.py
-└── trainer
-    ├── cloudml-gpu.yaml
-    ├── __init__.py
-    └── sentiment_keras_hpt.py
-``` -->
+The `setup.py` file, placed at the project root directory, allows the Cloud ML Engine server to automatically package your training application and install the package with any dependencies.
+
+`trainer/__init__.py` is required for the Cloud ML Engine to create a package from your module.

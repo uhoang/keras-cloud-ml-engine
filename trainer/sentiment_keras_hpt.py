@@ -25,14 +25,13 @@ batch_size = 100
 num_classes = 2
 epochs = 2000
 
-# N_X = 423 # len(train_x[0])
-layer1_size = 16
-
+# Create a function to allow for different training dat and other options
 def train_model(train_file='sentiment_set.pickle', 
                 job_dir='./tmp/example-5', 
                 dropout_one = 0.5,
                 dropout_two = 0.5,
                 **args):
+    # set the logging path for ML Engine logging to Storage Bucket
     logs_path = job_dir + '/logs/' + datetime.now().isoformat()
     print('-----------------------')
     print('Using train_file located at {}'.format(train_file))
@@ -57,7 +56,8 @@ def train_model(train_file='sentiment_set.pickle',
     print(x_train.shape, y_train.shape, 'train samples,', type(x_train[0][0]), ' ', type(y_train[0][0]))
     print(x_test.shape,  y_test.shape,  'test samples,',  type(x_test[0][0]),  ' ', type(y_train[0][0]))
     
-    to add LSTM layer need to reshape x_train, x_test to [n_samples, n_timestamps, n_outdims] where n_timestamps = 1
+    # to add LSTM layer need to reshape x_train, x_test to 
+    # [n_samples, n_timestamps, n_outdims] where n_timestamps = 1
     x_train = x_train.reshape((x_train.shape[0], 1, x_train.shape[1]))
     x_test = x_test.reshape((x_test.shape[0], 1, x_test.shape[1]))
 
@@ -81,7 +81,8 @@ def train_model(train_file='sentiment_set.pickle',
                   metrics=['accuracy'])
     callbacks = [
         EarlyStopping(monitor='val_loss', patience=10, verbose=0),
-        ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=7, verbose=1, epsilon=1e-4, mode='min')
+        ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=7, 
+                          verbose=1, epsilon=1e-4, mode='min')
     ]
 
     history = model.fit(x_train, y_train,
@@ -105,7 +106,7 @@ def train_model(train_file='sentiment_set.pickle',
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    # Input Arguments
+    # input arguments
     parser.add_argument(
       '--train-file',
       help='GCS or local paths to training data',
