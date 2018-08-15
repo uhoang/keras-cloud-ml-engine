@@ -23,6 +23,7 @@ gsutil cp -r sentiment_set.pickle gs://your-bucket-name/sentiment_set.pickle
 ### Create Cloud ML Engine's project structure 
 This is how the basic project structure looks like on your local machine:
 ![project structure](img/recommended-project-structure.png?raw=true)
+
 (The image is copied from [](https://cloud.google.com/ml-engine/docs/tensorflow/packaging-trainer))
 
 The `setup.py` file in the project root directory allows the Cloud ML Engine to automatically package your training application, then install the package with any dependencies on the servers it spins up.
