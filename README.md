@@ -95,3 +95,8 @@ trainingInput:
         maxValue: 0.5
         scaleType: UNIT_REVERSE_LOG_SCALE
 ```
+
+References:
+  -[A great tutorial for Tensorflow and Keras with Cloud ML Engine](http://liufuyang.github.io/2017/04/02/just-another-tensorflow-beginner-guide-4.html) for beginners from Fuyang Liu
+  -[Hyperparameter Tuning on Cloud ML Engine](https://github.com/clintonreece/keras-cloud-ml-engine)
+  -[Overview of Hyperparameter Tuning](https://cloud.google.com/ml-engine/docs/tensorflow/hyperparameter-tuning-overview)
