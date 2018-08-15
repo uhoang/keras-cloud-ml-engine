@@ -13,7 +13,7 @@ A beginner guide to set up and run a LSTM model for a simple sentiment analysis 
 You should see `List 0 items`. because we haven't created any ML Engine models yet.
 
 ### Upload the preprocessed data to a Google Cloud Storage bucket 
-Create bucket and copy the model input into it. **Pay attention to service region (here I use us-east1)**.
+Create bucket and copy the model input into it. Pay attention to **service region** (here I use **us-east1**).
 
 ```
 gsutil mb us-east1 gs://your-bucket-name
