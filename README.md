@@ -41,3 +41,5 @@ gcloud ml-engine local train \
   --train-file sentiment_set.pickle \
   --job-dir ./tmp/sentiment_keras_hpt
 ```
+
+or `source gcloud.local.run.keras.sh`
