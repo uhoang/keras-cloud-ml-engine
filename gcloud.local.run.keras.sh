@@ -1,3 +1,4 @@
+mkdir -p ./tmp/sentiment_keras_hpt
 gcloud ml-engine local train \
   --module-name trainer.sentiment_keras_hpt \
   --package-path ./trainer \
