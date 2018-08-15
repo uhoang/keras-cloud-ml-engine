@@ -27,7 +27,7 @@ epochs = 2000
 
 # Create a function to allow for different training dat and other options
 def train_model(train_file='sentiment_set.pickle', 
-                job_dir='./tmp/example-5', 
+                job_dir='./tmp/sentiment_keras_hpt', 
                 dropout_one = 0.5,
                 dropout_two = 0.5,
                 **args):
@@ -118,11 +118,11 @@ if __name__ == '__main__':
       required=True
     )
     parser.add_argument(
-      '--dropout_one',
+      '--dropout-one',
       help='Dropout hyperparameter after the first dense layer'
     )
     parser.add_argument(
-      '--dropout_two',
+      '--dropout-two',
       help='Dropout hyperparam after the second dense layer'
     )
 
