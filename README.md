@@ -63,3 +63,35 @@ gcloud ml-engine jobs submit training $JOB_NAME \
 ```
 
 Click here to view the [job status](https://console.cloud.google.com/mlengine/jobs?project=zinc-chiller-213404).
+
+### Hyperparameter tuning
+A **hyperparameter** is a parameter that is set before the model is trained. By contrast, the **weights** and **biases** are derived via training.
+Cloud ML Engine can do hyperparameter tuning, i.e. running the training multiple times to figure out good values for hyperparameters. To do this, the trainer module needs to take in the hyperparameters as arguments.
+
+For example, the [file](https://github.com/uhoang/keras-cloud-ml-engine/blob/master/trainer/sentiment_keras_hpt.py) takes the `dropout-one` and `dropout-two` arguments corresponding to the dropout rates of the two hidden layers. The dropout rate are doubles between 0.1 and 0.5, that means to drop out 10% to 50% of the incoming parameters from the previous layer. The doubles are chosen to maximize the `accuracy` metric. `UNIT_REVERSE_LOG_SCALE` is chosen so that it checks values more densely on the bottom end of the range, since the original values were 0.25. Eight trials are run, with a maximum of four running at any given time:
+
+```
+
+trainingInput:
+  scaleTier: CUSTOM
+  # standard_gpu provides 1 GPU. Change to complex_model_m_gpu for 4 GPUs
+  masterType: standard_gpu
+  runtimeVersion: "1.0"
+  hyperparameters:
+    goal: MAXIMIZE
+    hyperparameterMetricTag: accuracy
+    maxTrials: 8
+    enableTrialEarlyStopping: True
+    maxParallelTrials: 4
+    params:
+      - parameterName: dropout-one
+        type: DOUBLE
+        minValue: 0.1
+        maxValue: 0.5
+        scaleType: UNIT_REVERSE_LOG_SCALE
+      - parameterName: dropout-two
+        type: DOUBLE
+        minValue: 0.1
+        maxValue: 0.5
+        scaleType: UNIT_REVERSE_LOG_SCALE
+```
