@@ -12,16 +12,17 @@ A beginner guide to set up and run a LSTM model for a simple sentiment analysis 
 
 You should see `List 0 items`. because we haven't created any ML Engine models yet.
 
-### Upload the preprocessing data to a Google Cloud Storage bucket 
+### Upload the preprocessed data to a Google Cloud Storage bucket 
 ```
 gsutil mb gs://your-bucket-name
 gsutil cp -r sentiment_set.pickle gs://your-bucket-name/sentiment_set.pickle
 ```
 
-### Cloud ML Engine's project structure 
+### Create Cloud ML Engine's project structure 
 The basic project structure will look something like this: 
+[project structure](/img/recommended-project-structure.png)
 
-```
+<!-- ```
 ├── README.md
 ├── sentiment_set.pickle
 ├── setup.py
@@ -29,4 +30,4 @@ The basic project structure will look something like this:
     ├── cloudml-gpu.yaml
     ├── __init__.py
     └── sentiment_keras_hpt.py
-```
+``` -->
