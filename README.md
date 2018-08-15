@@ -20,7 +20,7 @@ gsutil cp -r sentiment_set.pickle gs://your-bucket-name/sentiment_set.pickle
 
 ### Create Cloud ML Engine's project structure 
 The basic project structure will look something like this: 
-![project structure][img/recommended-project-structure.png]
+![project structure](img/recommended-project-structure.png?raw=true)
 
 <!-- ```
 ├── README.md
