@@ -8,7 +8,7 @@ A guide to set up and run a LSTM model for a simple sentiment analysis on Google
 3. Set up the credentials quickly via web browser, run
 `gcloud auth application-default login`
 4. Check your Cloud ML Engine available models:
-`gcloud ml-engine model list`
+`gcloud ml-engine models list`
 
 You should see `List 0 items`. because we haven't created any ML Engine models yet.
 
