@@ -16,7 +16,7 @@ You should see `List 0 items`. because we haven't created any ML Engine models y
 Create bucket and copy the model input into it. Pay attention to **service region** (here I use **us-east1**).
 
 ```
-gsutil mb us-east1 gs://your-bucket-name
+gsutil mb -p grocery-rnn -l us-east1 gs://your-bucket-name
 gsutil cp -r sentiment_set.pickle gs://your-bucket-name/sentiment_set.pickle
 ```
 
